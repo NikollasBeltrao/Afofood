@@ -1,20 +1,75 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+        <ion-toolbar color="primary" id="tool">
+            <ion-avatar slot="start">
+                <img class="img"
+                    src={{user.avatar}}>
+            </ion-avatar>
+            <label class="label1">{{user.name}}</label><br>
+            <label class="label2">{{user.email}}</label>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content color="tertiary">
+        <ion-list id="bg">
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="person-outline"></ion-icon> Perfil
+            </ion-item>
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="cart-outline"></ion-icon> Seus Pedidos
+            </ion-item>
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="wallet-outline"></ion-icon> Promoções
+            </ion-item>
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="star-outline"></ion-icon> Favoritos
+            </ion-item>
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="search-sharp"></ion-icon> Pesquisar
+            </ion-item>
+            <ion-item color="secondary" class="item-menu">
+                <ion-icon class="icon-item" name="settings-outline"></ion-icon> Configurações
+            </ion-item>
+            <ion-item color="secondary" class="item-menu" (click)="sair()">
+                <ion-icon class="icon-item" name="log-out-outline"></ion-icon> Sair
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+
+        </ion-buttons>
+        <ion-buttons slot="secondary">
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content id="main" color="tertiary">
+    <div id="lista" *ngFor="let pub of pubsC">
+        <div class="cards">
+            <div class="card-topo">
+                <ion-avatar class="card-avatar" (click)="goRest(pub.resId)" slot="start">
+                    <img class="card-avatar-img" src={{pub.resAvatar}}>
+                </ion-avatar>
+                <label class="card-nome" (click)="goRest(pub.resId)">{{pub.resName}}</label>
+                <ion-icon class="card-icon-top" name="ellipsis-vertical"></ion-icon>
+            </div>
+            <div class="card-mid">
+                <img class="card-img"src="{{pub.pubImg}}">
+            </div>            
+            <div class="card-foot">
+                <ion-icon class="card-icon left" name="heart-outline"></ion-icon>
+                <ion-icon class="card-icon left" name="chatbubbles-outline"></ion-icon>
+                <ion-icon class="card-icon left" name="send-outline"></ion-icon>
+                <ion-icon class="card-icon right" name="flag-outline"></ion-icon>
+            </div>
+            <p>{{pub.pubDesc}}</p>
+        </div>
+    </div>
 </ion-content>

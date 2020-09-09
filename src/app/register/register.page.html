@@ -1,0 +1,28 @@
+<ion-content>
+  <!-- Cadastrar -->
+  <div id="todo-register">
+    <div id="over">
+      <div id="top-register">
+        <img src="/assets/imgs/logo-white.png">
+        <h4>Eba! Vamos lá.</h4>
+        <p>Crie suas credenciais de acesso</p>
+      </div>
+      <div id="form-register">
+        <div class="input">
+          <label>Como você se chama?</label>
+          <input type="text" [(ngModel)]="registerForm.name">
+        </div>
+        <div class="input">
+          <label>Qual é o seu e-mail?</label>
+          <input type="email" [(ngModel)]="registerForm.email">
+        </div>
+        <div class="input">
+          <label>Crie uma senha</label>
+          <input type="password" [(ngModel)]="registerForm.password">
+        </div>
+        <button type="submit" (click)="cadastar()">Cadastrar</button>
+        <p (click)="openLogin()">Já tenho uma conta</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

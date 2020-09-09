@@ -1,0 +1,24 @@
+<ion-content>
+  <!-- login -->
+  <div id="todo-login">
+    <div id="over">
+      <div id="top-login">
+        <img src="/assets/imgs/logo-white.png">
+        <h4>Bem vindo(a) ao Afofood</h4>
+        <p>Entre com sua conta para continuar</p>
+      </div>
+      <div id="form-login">
+        <div class="input">
+          <label>E-mail</label>
+          <input type="email" [(ngModel)]="loginForm.email">
+        </div>
+        <div class="input">
+          <label>Senha</label>
+          <input type="password" [(ngModel)]="loginForm.password">
+        </div>
+        <button type="submit" (click)="fazerlogin()">Entrar</button>
+        <p (click)="openRegister()">Quero me cadastar</p>
+      </div>
+    </div>
+  </div>  
+</ion-content>

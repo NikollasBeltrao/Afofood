@@ -1,0 +1,70 @@
+#todo-login{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/imgs/login-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#over{    
+    position: absolute;
+    width: 100%;
+    height: 100%;    
+    background: linear-gradient(to top, rgb(0,0,0), rgba(0,0,0,0.901), rgba(0,0,0,0.792), rgba(0,0,0,0.716));     
+}
+#top-login{
+    margin-top: 100px;   
+    align-items: center;
+    text-align: center;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+}
+#top-login img{
+    width: 100px;
+    height: 100px;
+}
+#top-login p{
+    font-size: 14px;
+    opacity: 0.5;
+}
+#form-login{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 100px;
+}
+#form-login button{
+    width: 100%;    
+    height: 30px;
+    font-size: 18px;
+    color: white;
+    background-color: purple;
+    border-radius: 50px;
+}
+#form-login p{
+    width: 100%;  
+    text-align: center;
+    color: white;  
+    font-size: 15px;
+    opacity: 0.5;
+}
+#form-login p:hover{
+    cursor: pointer;
+}
+.input{
+    color: white;
+    font-size: 13px;
+}
+.input input{
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px white;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 30px;
+}
+.input input:focus{    
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}

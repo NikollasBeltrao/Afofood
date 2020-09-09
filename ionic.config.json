@@ -1,5 +1,7 @@
 {
   "name": "afofood-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
