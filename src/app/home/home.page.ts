@@ -30,6 +30,7 @@ export class HomePage {
     load.present();
     await this.firebase.getPubs().then((res) => {
       this.pubs.push(res);
+      console.log(res);
       this.pubs[0].forEach(p => {
         let rest;
         let pub;
