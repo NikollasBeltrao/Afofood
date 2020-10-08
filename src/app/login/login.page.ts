@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { Router } from '@angular/router'
 import { AuthProvider } from 'src/providers/auth';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { async } from '@angular/core/testing';
 
 @Component({
@@ -16,12 +16,22 @@ export class LoginPage implements OnInit {
     password: ''
   }
   constructor(private nativePageTransitions: NativePageTransitions, private router: Router, private auth: AuthProvider,
-    public loading: LoadingController) { }
+    public loading: LoadingController, private menu: MenuController) { }
 
   ngOnInit() {
+
   }
-  openRegister() {
+  ionViewDidEnter(){
+    this.menu.enable(false);
+  }
+  ionViewWillLeave(){
+    this.menu.enable(true);
+  }
+  openRegisterUser() {
     this.router.navigate(['register']);
+  }
+  openRegisterRes(){
+    this.router.navigate(['register-restaurante']);
   }
   async fazerlogin() {
     let load = await this.loading.create({

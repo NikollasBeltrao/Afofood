@@ -15,5 +15,5 @@ export class PerfilRestaurantePage implements OnInit {
       this.idRes = parametros['id'];
     });
   }
-
+  
 }

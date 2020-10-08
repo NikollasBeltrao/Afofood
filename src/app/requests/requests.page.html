@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card *ngFor="let item of items" style="background-color: white">
+      <ion-card-header>
+        <ion-card-title>Pedido</ion-card-title>
+        <ion-card-subtitle>x: {{item.payload.doc.data().foodId}}</ion-card-subtitle>
+        <ion-card-subtitle>y: {{item.payload.doc.data().adress}}</ion-card-subtitle>         
+        <ion-card-subtitle>z: {{item.payload.doc.data().pedinteId}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button shape="round" class="black" size="small" (click)="abrirDetalhes(item.payload.doc.id)">
+          <ion-icon size="small" slot="icon-only" name="eye"></ion-icon>
+        </ion-button>
+        <ion-button shape="round" class="i" size="small" (click)="showAlert(item.payload.doc.id)">
+            <ion-icon size="small" slot="icon-only" name="checkmark"></ion-icon>
+          </ion-button>
+        <ion-button shape="round" class="black" size="small" (click)="abrirChat(item.payload.doc.id)">
+          <ion-icon size="small" slot="icon-only" name="chatboxes"></ion-icon>
+        </ion-button>            
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -26,6 +26,18 @@ const routes: Routes = [
   {
     path: 'perfil-usuario',
     loadChildren: () => import('./perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
+  },
+  {
+    path: 'requests/:id',
+    loadChildren: () => import('./requests/requests.module').then( m => m.RequestsPageModule)
+  },
+  {
+    path: 'do-request',
+    loadChildren: () => import('./do-request/do-request.module').then( m => m.DoRequestPageModule)
+  },
+  {
+    path: 'register-restaurante',
+    loadChildren: () => import('./register-restaurante/register-restaurante.module').then( m => m.RegisterRestaurantePageModule)
   },
 ];
 

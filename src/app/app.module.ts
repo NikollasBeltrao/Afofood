@@ -18,6 +18,7 @@ import {AuthProvider} from '../providers/auth'
 import {FirebaseProvider} from '../providers/firebase'
 
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AuthProvider,
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativePageTransitions
   ],

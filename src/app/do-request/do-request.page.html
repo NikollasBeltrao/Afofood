@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>doRequest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="doRequest(validations_form.value)">
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Endereço</ion-label>
+      <ion-input type="text" formControlName="adress"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">IDFood</ion-label>
+      <ion-input type="text" formControlName="foodId"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Restaurante Id</ion-label>
+      <ion-input type="text" formControlName="restaurantId"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Pedinte ID</ion-label>
+      <ion-input type="text" formControlName="pedinteId"></ion-input>
+    </ion-item>
+    <ion-button type="submit">Cadastrar</ion-button>
+  </form>
+</ion-content>

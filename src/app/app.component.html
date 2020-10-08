@@ -1,3 +1,49 @@
 <ion-app>
-  <ion-router-outlet ></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu *ngIf="user.tipo == 0" contentId="main-content" type="overlay">
+      <ion-avatar>
+        <img src="{{user.imagem ? user.imagem : './assets/imgs/default-avatar.jpg'}}" alt="Não deu bom">
+      </ion-avatar>
+      <ion-list-header>{{user.nome}}</ion-list-header>
+      <ion-note>{{user.email}}</ion-note>
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesCliente; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-item lines="none" (click)="sair()">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>Sair</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-menu *ngIf="user.tipo == 1" contentId="main-content" type="overlay">
+      <ion-avatar>
+        <img src="{{user.imagem ? user.imagem : './assets/imgs/default-avatar.jpg'}}" alt="Não deu bom">
+      </ion-avatar>
+      <ion-list-header>{{user.nome}}</ion-list-header>
+      <ion-note>{{user.email}}</ion-note>
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesRes; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-item lines="none" (click)="sair()">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>Sair</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

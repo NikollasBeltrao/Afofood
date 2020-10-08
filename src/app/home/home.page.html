@@ -1,46 +1,7 @@
-<ion-menu side="start" menuId="first" contentId="main">
-    <ion-header>
-        <ion-toolbar color="primary" id="tool">
-            <ion-avatar slot="start">
-                <img class="img"
-                    src={{user.avatar}}>
-            </ion-avatar>
-            <label class="label1">{{user.name}}</label><br>
-            <label class="label2">{{user.email}}</label>
-        </ion-toolbar>
-    </ion-header>
-    <ion-content color="tertiary">
-        <ion-list id="bg">
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="person-outline"></ion-icon> Perfil
-            </ion-item>
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="cart-outline"></ion-icon> Seus Pedidos
-            </ion-item>
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="wallet-outline"></ion-icon> Promoções
-            </ion-item>
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="star-outline"></ion-icon> Favoritos
-            </ion-item>
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="search-sharp"></ion-icon> Pesquisar
-            </ion-item>
-            <ion-item color="secondary" class="item-menu">
-                <ion-icon class="icon-item" name="settings-outline"></ion-icon> Configurações
-            </ion-item>
-            <ion-item color="secondary" class="item-menu" (click)="sair()">
-                <ion-icon class="icon-item" name="log-out-outline"></ion-icon> Sair
-            </ion-item>
-        </ion-list>
-    </ion-content>
-</ion-menu>
-
-
 <ion-header>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-menu-button autoHide="false"></ion-menu-button>
+            <ion-menu-button></ion-menu-button>
 
         </ion-buttons>
         <ion-buttons slot="secondary">

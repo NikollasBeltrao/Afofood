@@ -1,29 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthProvider } from 'src/providers/auth';
 import { FirebaseProvider } from 'src/providers/firebase';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-register-restaurante',
+  templateUrl: './register-restaurante.page.html',
+  styleUrls: ['./register-restaurante.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterRestaurantePage implements OnInit {
   registerForm = {
     name: '',
     email: '',
     password: '',
-    tipo: 0,
-    imagem: 'src/assets/imgs/default-avatar.jpg'
+    imagem: '',
+    tipo: 1
   }
-  constructor(private router: Router, private active: ActivatedRoute, private auth: AuthProvider, private firebase: FirebaseProvider,
+  constructor(private router: Router, private active: ActivatedRoute, private auth: AuthProvider, private firebase: FirebaseProvider, 
     private menu: MenuController) { }
-  id;
+
   ngOnInit() {
-    this.active.params.subscribe( parametros => {
-      this.id = parametros['id'];
-    });
   }
   ionViewDidEnter(){
     this.menu.enable(false);
