@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registerFood</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="createFood(validations_form.value)">
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Nome</ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Preço</ion-label>
+      <ion-input type="text" formControlName="preco"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Imagem</ion-label>
+      <ion-input type="text" formControlName="imagem"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Descrição</ion-label>
+      <ion-input type="text" formControlName="desc"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Tags</ion-label>
+      <tag-input formControlName="tags" [separatorKeyCodes]="[32]"></tag-input>
+    </ion-item>
+    <ion-button (click)="upload(validations_form.value)">
+      Search
+    </ion-button>
+    <ion-button type="submit">Cadastrar</ion-button>
+  </form>
+</ion-content>

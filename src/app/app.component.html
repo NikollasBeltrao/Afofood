@@ -1,27 +1,52 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu *ngIf="user.tipo == 0" contentId="main-content" type="overlay">
-      <ion-avatar>
-        <img src="{{user.imagem ? user.imagem : './assets/imgs/default-avatar.jpg'}}" alt="Não deu bom">
-      </ion-avatar>
-      <ion-list-header>{{user.nome}}</ion-list-header>
-      <ion-note>{{user.email}}</ion-note>
+      <ion-header color="primary" class="user-profile">
+        <ion-toolbar color="primary" class="user-toolbar">
+          <ion-avatar size="small" slot="start" class="user-avatar">
+              <img src="{{user.imagem ? user.imagem : './assets/imgs/default-avatar.jpg'}}" alt="Não deu bom">
+          </ion-avatar>
+          <ion-label class="profile-label">
+            <ion-text color="medium">
+              <h1 style="margin-left: 15px"><strong>{{user.nome}}</strong></h1>
+            </ion-text>
+            <ion-text color="secondary">
+              <h3 style="margin-left: 20px">{{user.email}}</h3>
+            </ion-text>
+            <ion-menu-toggle>
+              
+            </ion-menu-toggle>
+          </ion-label>
+        </ion-toolbar>
+      </ion-header>
+
       <ion-content>
         <ion-list id="inbox-list">
+          <ion-list-header class="list-header">
+            <ion-label><strong>Menu</strong></ion-label>
+          </ion-list-header>
+  
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesCliente; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
-              detail="false" [class.selected]="selectedIndex == i">
+            <ion-item color="primary" (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]"detail="false" [class.selected]="selectedIndex == i" lines="none">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-item lines="none" (click)="sair()">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+          <ion-item color="primary" (click)="sair()" lines="none">
+            <ion-icon slot="start" name="exit"></ion-icon>
             <ion-label>Sair</ion-label>
           </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////
+                                        Espaço
+    ////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
     <ion-menu *ngIf="user.tipo == 1" contentId="main-content" type="overlay">
       <ion-avatar>
         <img src="{{user.imagem ? user.imagem : './assets/imgs/default-avatar.jpg'}}" alt="Não deu bom">
@@ -31,14 +56,13 @@
       <ion-content>
         <ion-list id="inbox-list">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesRes; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
-              detail="false" [class.selected]="selectedIndex == i">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" detail="false" [class.selected]="selectedIndex == i" lines="none">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-item lines="none" (click)="sair()">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+          <ion-item color="primary" lines="none" (click)="sair()">
+            <ion-icon slot="start" name="exit"></ion-icon>
             <ion-label>Sair</ion-label>
           </ion-item>
         </ion-list>

@@ -20,7 +20,8 @@ export class UserService {
   ) {
    }
   getAllUsers(){
-    return this.snapshotChangesSubscription = this.afs.collectionGroup('Users');         
+    return this.snapshotChangesSubscription = this.afs.collection('Users', ref => ref.where("teste", "array-contains", "vegano")).valueChanges();    
+    //https://stackoverflow.com/questions/52071245/angular-firestore-query-to-firestore-document     
   }
   getUsers() {
     return new Promise<any>((resolve, reject) => {
@@ -72,7 +73,6 @@ export class UserService {
   }
 
   createUser(value) {
-    console.log(value);
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('Users').doc(value.userid).set({   

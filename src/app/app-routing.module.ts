@@ -39,6 +39,26 @@ const routes: Routes = [
     path: 'register-restaurante',
     loadChildren: () => import('./register-restaurante/register-restaurante.module').then( m => m.RegisterRestaurantePageModule)
   },
+  {
+    path: 'historico',
+    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
+  },
+  {
+    path: 'pesquisar',
+    loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
+  },
+  {
+    path: 'config',
+    loadChildren: () => import('./config/config.module').then( m => m.ConfigPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'register-food',
+    loadChildren: () => import('./register-food/register-food.module').then( m => m.RegisterFoodPageModule)
+  },
 ];
 
 @NgModule({

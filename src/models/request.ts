@@ -4,4 +4,5 @@ export class Request
     private restaurantId:any;
     private pedinteId:any;
     private adress:any;
+    private date:Date;
 }

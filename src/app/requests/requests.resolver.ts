@@ -8,6 +8,6 @@ export class RequestsResolver implements Resolve<any> {
   constructor(private requestService: RequestsService) {}
 
   resolve() {
-    return this.requestService.getRequests();
+    return this.requestService.getRequestsWhere();
   }
 }

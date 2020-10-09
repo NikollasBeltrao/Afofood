@@ -7,6 +7,7 @@ import { AuthProvider } from 'src/providers/auth';
 import { User } from 'src/models/user';
 import { UserService } from 'src/services/userCrud.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,34 +20,39 @@ export class AppComponent {
   public appPagesRes;
   public appPagesCliente = [
     {
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
+    },
+    {
       title: 'Perfil',
       url: '/perfil-restaurante',
-      icon: 'mail'
+      icon: 'person-circle'
     },
     {
       title: 'Historico',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      url: '/historico',
+      icon: 'alarm'
     },
     {
       title: 'Promoções',
       url: '/folder/Favorites',
-      icon: 'heart'
+      icon: 'star-half'
     },
     {
       title: 'Favoritos',
       url: '/folder/Archived',
-      icon: 'archive'
+      icon: 'heart'
     },
     {
       title: 'Pesquisar',
-      url: '/folder/Trash',
-      icon: 'trash'
+      url: '/search',
+      icon: 'search'
     },
     {
       title: 'Configurações',
-      url: '/folder/Spam',
-      icon: 'warning'
+      url: '/config',
+      icon: 'build'
     }    
   ];
   
@@ -58,16 +64,18 @@ export class AppComponent {
     private fireAuth: AuthProvider,
     private afAuth: AngularFireAuth,
     private useService: UserService,
+    private router: Router
   ) {
     this.user = new User();
     //this.user.imagem = "./assets/imgs/default-avatar.jpg";
-    this.initializeApp();    
+    this.initializeApp();   
+    this.useService.getAllUsers().subscribe(res => {
+      console.log(res);
+    })
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
       this.afAuth.user.subscribe(user => {
         if(user){
           this.useService.getUser(user.uid).then(res => {
@@ -77,8 +85,15 @@ export class AppComponent {
           this.user.nome = user.displayName;
           this.user.email = user.email;
           this.carregarPagesRes(user.uid);       
+        }else{
+          this.router.navigate(["/login"]);
         }
+      }, err => {
+        this.router.navigate(["/login"]);
+      }, () => {
+        this.splashScreen.hide();
       });
+      this.statusBar.styleDefault();
     });    
   }
  
@@ -91,8 +106,13 @@ export class AppComponent {
       },
       {
         title: 'Historico',
-        url: '/folder/Outbox',
+        url: '/historico',
         icon: 'paper-plane'
+      },
+      {
+        title: 'Cadastar Comida',
+        url: '/register-food',
+        icon: 'archive'
       },
       {
         title: 'Promoções',
@@ -106,12 +126,12 @@ export class AppComponent {
       },
       {
         title: 'Pesquisar',
-        url: '/folder/Trash',
+        url: '/search',
         icon: 'trash'
       },
       {
         title: 'Configurações',
-        url: '/folder/Spam',
+        url: '/config',
         icon: 'warning'
       },
       {

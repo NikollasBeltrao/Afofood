@@ -10,6 +10,7 @@ import { FirebaseProvider } from 'src/providers/firebase';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  
   registerForm = {
     name: '',
     email: '',
@@ -17,25 +18,32 @@ export class RegisterPage implements OnInit {
     tipo: 0,
     imagem: 'src/assets/imgs/default-avatar.jpg'
   }
-  constructor(private router: Router, private active: ActivatedRoute, private auth: AuthProvider, private firebase: FirebaseProvider,
-    private menu: MenuController) { }
+  
+  constructor(private router: Router, private active: ActivatedRoute, private auth: AuthProvider, private firebase: FirebaseProvider,private menu: MenuController) { 
+
+  }
+
   id;
+  
   ngOnInit() {
     this.active.params.subscribe( parametros => {
       this.id = parametros['id'];
     });
   }
+
   ionViewDidEnter(){
     this.menu.enable(false);
   }
+  
   ionViewWillLeave(){
     this.menu.enable(true);
   }
+  
   openLogin() {
     this.router.navigate(['login']);
   }
+  
   cadastar(){
-    
     this.auth.register(this.registerForm);
   }
 }

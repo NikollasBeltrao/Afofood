@@ -1,0 +1,23 @@
+.input-group .bootstrap-tagsinput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%
+}
+.input-group-btn {
+    height: 0px;
+}
+.input-group-btn .btn {
+    height: 100%;
+}
+ul {
+    padding-left: 0;
+    display: inline;
+    list-style-type: none;
+}
+li {
+    display: inline-block;
+}
+.input-group .bootstrap-tagsinput {
+    width: 100%;
+    margin-bottom: 1px;
+}

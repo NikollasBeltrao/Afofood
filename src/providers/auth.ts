@@ -23,12 +23,20 @@ export class AuthProvider {
       this.usuario.nome = data.name;
       this.usuario.tipo = data.tipo;
       this.usuario.imagem = data.imagem;
-      this.userService.createUser(this.usuario);
-      
       res.user.updateProfile({
         displayName: data.name,
         photoURL: data.imagem,        
       })
+      this.userService.createUser(this.usuario).then(()=>{
+        //this.login({email: data.email,password: data.password});
+        //let valor = {email: value.email, password: value.password};
+        //let user = firebase.auth().currentUser;
+        //user.sendEmailVerification();
+        //this.doLogin(valor);
+        this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password);
+      });
+      
+      
     });
   }
 

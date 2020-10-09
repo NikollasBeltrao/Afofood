@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     this.auth.login(this.loginForm)
       .then((res) => { 
         this.auth.salvarStorage(res.user);      
-        load.dismiss();               
+        load.dismiss();
         this.router.navigate(['home', { id: res.user.uid }]);
       })
       .catch((err) => {

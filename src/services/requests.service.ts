@@ -28,7 +28,16 @@ export class RequestsService {
       })
     })
   }
-
+  getRequestsWhere(){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('requests', res => res.where("restaurantId", "==", currentUser.uid)).snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
   getTask(taskId){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
