@@ -5,6 +5,7 @@ import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Food } from 'src/models/food';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class FoodService {
         preco: value.preco,
         resId: currentUser.uid,
         desc: value.desc,
-        tags: array,
+        tags: value.tags,
         imagem: value.imagem
       })
         .then(
@@ -39,11 +40,10 @@ export class FoodService {
   }
 
   getRequestsByName(nome){
-    return new Promise<any>((resolve, reject) => {
+    new Observable<any>(() => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('Foods', res => res.where("nome", "array-contains", nome)).snapshotChanges();
-          resolve(this.snapshotChangesSubscription);
+          this.snapshotChangesSubscription = this.afs.collection('Foods', res => res.where("tags", "array-contains", nome)).snapshotChanges();
         }
       })
     })

@@ -1,7 +1,7 @@
 export class Message
 {
-    private de:string;
-    private para:string;
-    private texto:string;
-    private date:Date;
+    public de:string;
+    public para:string;
+    public texto:string;
+    public date:Date;
 }

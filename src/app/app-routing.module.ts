@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'register-food',
     loadChildren: () => import('./register-food/register-food.module').then( m => m.RegisterFoodPageModule)
   },
+  {
+    path: 'chat/:id',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
 ];
 
 @NgModule({

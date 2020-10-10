@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content no-padding id="bg-cont">
+  <ion-list no-lines class="withoutbg">
+    <ion-item class="withoutbg" *ngFor="let msg of listamensagens">
+      <app-chat-bubble *ngIf="msg.de==usuario && msg.para==usuariomensagem" [mensagem]="msg" [p]="'left'" ></app-chat-bubble>
+      <app-chat-bubble *ngIf="msg.para==usuario && msg.de==usuariomensagem" [mensagem]="msg" [p]="'right'" ></app-chat-bubble>
+    </ion-item>
+  </ion-list>   
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item no-lines>
+      <ion-input type="text" [(ngModel)]="mensagem.texto" (keyup.enter)="PostMessage(mensagem.texto); mensagem.texto=''" name="txtmensagem"></ion-input>
+      <ion-button (click)="PostMessage(mensagem.texto); mensagem.texto=''">
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+  <!--emoji-picker [(ngModel)]="editorMsg"></emoji-picker-->
+</ion-footer>

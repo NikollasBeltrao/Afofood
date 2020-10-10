@@ -3,7 +3,7 @@
     <ion-title>Pesquisar</ion-title>
   </ion-toolbar>
   <ion-toolbar color="primary">
-    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchKey" (keyup.enter)="onEnter()"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
         <ion-icon name="options"></ion-icon>
@@ -12,89 +12,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-content *ngIf="items" class="list-mini-content">
-    <ion-card no-margin class="no-radius">
-      <ion-item lines="none" color="medium">
-        <ion-label>
-          <h2 no-margin class="fw500 no-margin">
-            <ion-text color="dark">Endereço</ion-text>
-          </h2>
-  
-          <p class="text-11x no-margin">
-            <ion-text  color="primary">{{yourLocation}}</ion-text>
-          </p>
-        </ion-label>
-        <ion-button shape="round" fill="outline" size="small" color="primary" (click)="alertLocation()">
-          Localização
-          <ion-icon name="locate"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-card>
-    
+<ion-content *ngIf="listaFood" class="list-mini-content">
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark">Endereço</ion-text>
+        </h2>
+
+        <p class="text-11x no-margin">
+          <ion-text color="primary">{{yourLocation}}</ion-text>
+        </p>
+      </ion-label>
+      <ion-button shape="round" fill="outline" size="small" color="primary" (click)="alertLocation()">
+        Localização
+        <ion-icon name="locate"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+
+  <div *ngIf="listaFood.length == 0" class="empty-list">
+    Nenhuma comida registrada!
+  </div>
+
+
   <ion-list id="lista">
-      <div class="item" color="gray" >
-        <ion-card class="card" *ngFor="let publicacao of listapublicacoes">
-            <ion-item>
-              <ion-avatar style="height: 45px; width: 45px;" slot='start'>
-                <!--Imagem do restaurante img src="{{publicacao.img}}">-->
-              </ion-avatar>
-              <ion-label class="nomeUsu"><strong>{{publicacao.descricao}}</strong></ion-label>
-            </ion-item>
-          <img src="{{publicacao.imgUrl}}" alt="">
-  
-          <ion-card-content >
-                <ion-icon ios="ios-heart" md="md-heart"> <br> </ion-icon>
-                <ion-label class="nomeComida"><strong>{{publicacao.nomeComida}}</strong></ion-label><br>
-            <ion-list>
-                <ion-label class="comentarios" *ngFor="let comentario of publicacao.comentarios"><strong>{{comentario.nome}}</strong> {{comentario.comentario}}</ion-label>
-            </ion-list>          
-          </ion-card-content>
-        </ion-card>
-      </div>
-    </ion-list>
-    <!--<div *ngIf="items.length > " class="list-mini">
-      <ion-card *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
-      
-        <ion-img class="image" [src]="item.payload.doc.data().image"></ion-img>
-        <ion-card-header>
-          <ion-card-subtitle>Restaurante</ion-card-subtitle>
-            <ion-card-title>{{item.payload.doc.data().title}}</ion-card-title>
-        </ion-card-header>
-      
+    <div class="item" color="gray">
+      <ion-card class="card" *ngFor="let food of listaFood">
+        <ion-item>
+          <ion-avatar style="height: 45px; width: 45px;" slot='start'>
+            <img src="{{food.imagem}}">
+          </ion-avatar>
+          <ion-label class="nomeUsu"><strong>{{food.nome}}</strong></ion-label>
+          
+          
+        </ion-item>
+
         <ion-card-content>
-          R$ {{item.payload.doc.data().price}}
+          <ion-icon ios="ios-heart" md="md-heart"> <br> </ion-icon>
+          <ion-label class="nomeComida"><strong>{{food.desc}}</strong></ion-label><br>
+          <ion-label class="nomeUsu"><strong>{{food.preco}}</strong></ion-label>
+          <div *ngFor="let tags of food.tags"> 
+            <ion-label class="nomeUsu"><strong>{{tags}}</strong></ion-label>
+          </div>
+          <ion-list>
+          </ion-list>
         </ion-card-content>
-        <ion-button class="submit-btn" expand="block" type="submit">Comprar</ion-button>
-        <ion-button class="submit-btn" expand="block" type="submit">Add Carrinho</ion-button>
-        
       </ion-card>
     </div>
-    <div *ngIf="items.length == 0" class="empty-list">
-        Nenhuma comida registrada!
-    </div>
-  -->
-  
-    <ion-list id="lista">
-      <div class="item" color="gray" >
-        <ion-card class="card" *ngFor="let publicacao of publicacoes">
-            <ion-item>
-              <ion-avatar style="height: 45px; width: 45px;" slot='start'>
-                <img src="{{publicacao.img}}">
-              </ion-avatar>
-              <ion-label class="nomeUsu"><strong>{{publicacao.nome}}</strong></ion-label>
-            </ion-item>
-          <img src="{{publicacao.imgComida}}" alt="">
-  
-          <ion-card-content >
-                <ion-icon ios="ios-heart" md="md-heart"> <br> </ion-icon>
-                <ion-label class="nomeComida"><strong>{{publicacao.nomeComida}}</strong></ion-label><br>
-            <ion-list>
-                <ion-label class="comentarios" *ngFor="let comentario of publicacao.comentarios"><strong>{{comentario.nome}}</strong> {{comentario.comentario}}</ion-label>
-            </ion-list>          
-          </ion-card-content>
-        </ion-card>
-      </div>
-    </ion-list>
-  </ion-content>
-    
+  </ion-list>
+</ion-content>

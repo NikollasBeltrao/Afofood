@@ -29,6 +29,7 @@ export class RequestsPage implements OnInit {
     this.presentLoading(loading);
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
+        console.log(data);
         loading.dismiss();
         this.items = data;        
         this.applyFilters(this.items);
