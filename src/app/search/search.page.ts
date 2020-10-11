@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavController, PopoverController, ToastController } from '@ionic/angular';
-import { SearchFilterPage } from 'src/modal/search-filter/search-filter.page';
 import { Observable } from 'rxjs';
 import { ImagePage } from 'src/modal/image/image.page';
 import { NotificationsComponent } from 'src/components/notifications/notifications.component';
@@ -9,6 +8,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Food } from 'src/models/food';
+import { SearchFilterPage } from 'src/components/search-filter/search-filter.page';
+import { SearchFiltersComponent } from 'src/components/search-filters/search-filters.component';
 
 @Component({
   selector: 'app-search',
@@ -28,7 +29,6 @@ export class SearchPage implements OnInit {
   listaFood: Observable<Food[]>;
   lista: Observable<Food[]>;
   nomeuser: string;
-
   public publicacoes: Observable<any>;
   public list: Array<any> = [];
   public publicacoess: Array<any> = [];
@@ -37,6 +37,7 @@ export class SearchPage implements OnInit {
     public toastCtrl: ToastController, public modalCtrl: ModalController,
     public afAuth: AngularFireAuth, public nav: NavController, public fbauth: AngularFireAuth, public acrroute: ActivatedRoute,
     public fbstore: AngularFirestore) {
+    
     this.food = new Food();
     
     this.GetUser();
@@ -58,8 +59,10 @@ export class SearchPage implements OnInit {
   }
 
   ListarFoods() {
+    console.log(SearchFiltersComponent);
 
-    this.lista = this.fbstore.collection<Food>("Foods", ref => { return ref.limit(300).where("preco", ">=", 0).where("nome", "==", this.searchKey) }).valueChanges()//.where("de","==",res.uid)}).valueChanges()
+    this.lista = this.fbstore.collection<Food>("Foods", ref => { return ref.limit(300).orderBy("nome_lower")
+    .startAt(this.searchKey.toLowerCase()).endAt(this.searchKey.toLowerCase()+"\uf8ff") }).valueChanges()//.where("de","==",res.uid)}).valueChanges()
     console.log(this.lista);
     if (this.lista) {
       this.lista.subscribe(res => {
@@ -116,7 +119,7 @@ async alertLocation() {
 
 async searchFilter() {
   const modal = await this.modalCtrl.create({
-    component: SearchFilterPage
+    component: SearchFiltersComponent
   });
   return await modal.present();
 }
@@ -139,7 +142,8 @@ async notifications(ev: any) {
   return await popover.present();
 }
 
-onEnter(){
+onEnter(e){
+  this.searchKey = e.target.value;
   this.ListarFoods();
 }
 }

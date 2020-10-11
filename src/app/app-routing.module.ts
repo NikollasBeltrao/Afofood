@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'chat/:id',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   },
+  {
+    path: 'register-pub',
+    loadChildren: () => import('./register-pub/register-pub.module').then( m => m.RegisterPubPageModule)
+  },
 ];
 
 @NgModule({

@@ -52,7 +52,7 @@ export class FirebaseProvider {
   }
   getPubs(){
     return new Promise((resolve, reject) => {
-      this.afs.firestore.collection('Pubs').get()
+      this.afs.firestore.collection('Posts').get()
       .then((r) => {
         let array = [];
         r.forEach((d) =>{

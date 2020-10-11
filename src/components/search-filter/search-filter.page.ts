@@ -15,11 +15,19 @@ export class SearchFilterPage implements OnInit {
   organizeby: any;
   dishtype: any;
   
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController) {
+   }
 
   ngOnInit() {
   }
-
+  get getValues(){
+    return {
+      organizeby: this.organizeby,
+      dishtype: this.dishtype,
+      radiusmiles: this.radiusmiles,
+      minmaxprice: this.minmaxprice
+    }
+  }
   closeModal() {
     this.modalCtrl.dismiss();
   }

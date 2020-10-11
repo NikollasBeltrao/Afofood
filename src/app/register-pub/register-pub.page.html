@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registerPub</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="createPubus(validations_form.value)">
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Imagem</ion-label>
+      <ion-input type="text" formControlName="imagem"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-bg">
+      <ion-label position="fixed">Descrição</ion-label>
+      <ion-input type="text" formControlName="desc"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="upload(validations_form.value)">
+      Search
+    </ion-button>
+    <ion-button type="submit">Cadastrar</ion-button>
+  </form>
+</ion-content>

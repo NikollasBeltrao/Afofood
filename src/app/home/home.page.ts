@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseProvider } from 'src/providers/firebase';
 import { AuthProvider } from 'src/providers/auth';
 import { MenuController, LoadingController } from '@ionic/angular';
+import { PostsService } from 'src/services/postsCrud.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomePage {
   pubs = [];
   pubsC = [];
   data;
-  constructor(private active: ActivatedRoute, private firebase: FirebaseProvider,
+  constructor(private active: ActivatedRoute, private firebase: FirebaseProvider, public postService: PostsService,
      private auth: AuthProvider, public router: Router, private menu: MenuController, public loading: LoadingController) { }
   async ngOnInit() {
     let load = await this.loading.create({
@@ -33,13 +34,14 @@ export class HomePage {
       this.pubs[0].forEach(p => {
         let rest;
         let pub;
-        this.firebase.getRes(p.idRes).then((r) => {
+        this.firebase.getUser(p.restaurantId).then((r) => {
           rest = r.data();
+          console.log(res);
           pub = {
-            resId: p.idRes,
-            resAvatar: rest.avatar,
-            resName: rest.name,
-            pubImg: p.img,
+            resId: p.restaurantId,
+            resAvatar: rest.image,
+            resName: rest.nome,
+            pubImg: p.imagem,
             pubDesc: p.desc                        
           }
           

@@ -3,7 +3,7 @@
     <ion-title>Pesquisar</ion-title>
   </ion-toolbar>
   <ion-toolbar color="primary">
-    <ion-searchbar [(ngModel)]="searchKey" (keyup.enter)="onEnter()"></ion-searchbar>
+    <ion-searchbar placeholder="Pesquisar" [(ngModel)]="searchKey" (keyup)="onEnter($event)"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
         <ion-icon name="options"></ion-icon>

@@ -100,8 +100,8 @@ export class AppComponent {
   carregarPagesRes(id){
     this.appPagesRes  = [
       {
-        title: 'Perfil',
-        url: '/perfil-restaurante',
+        title: 'Home',
+        url: '/',
         icon: 'mail'
       },
       {
@@ -113,6 +113,11 @@ export class AppComponent {
         title: 'Cadastar Comida',
         url: '/register-food',
         icon: 'archive'
+      },
+      {
+        title: 'Publicar',
+        url: '/register-pub',
+        icon: 'heart'
       },
       {
         title: 'Promoções',

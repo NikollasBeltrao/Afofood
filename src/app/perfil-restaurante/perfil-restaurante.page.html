@@ -1,20 +1,9 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="primary" no-border>
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="secondary">
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div id="top">
-
-    <ion-avatar slot="start" class="avatar">
-      <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTMkuejbqTuN2vRdVjaqteAwmT6QHAwQnF7i0kOsrOG4E5dD-D8Kaemk_CGpaYX8NZh3OGw36RR9whNJ29yCx8MXQ&usqp=CAU&ec=45690271">
-    </ion-avatar>
-  
+    <img id="img" src="{{user.image}}">
+    <h5>{{user.nome}} <p>{{user.email}}</p></h5>
+    
   </div>
+
+
 </ion-content>
